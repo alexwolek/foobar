@@ -17,6 +17,8 @@ namespace Foobar.Api.Controllers
         [HttpGet]
         public IActionResult Get()
         {
+            _logger.LogInformation("in get endpoint");
+
             var foobars = new [] 
             {
                 new {foo = "bar"},
