@@ -1,2 +1,2 @@
 # foobar
-this is a garbage repo to see if the environment feature is available
+this is repo is for testing out using github actions for a .NET Core web api
