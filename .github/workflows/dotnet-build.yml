@@ -4,6 +4,7 @@ on:
   push:
     paths: 
     - 'src/**'
+    - '**.sln'
     - '.github/workflows/dotnet-build.yml'
   workflow_dispatch:
 
