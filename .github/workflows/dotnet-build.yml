@@ -2,7 +2,9 @@ name: .NET build
 
 on:
   push:
-    paths: 'src/**'
+    paths: 
+    - 'src/**'
+    - '.github/workflows/dotnet-build.yml'
   workflow_dispatch:
 
 jobs:
@@ -16,6 +18,8 @@ jobs:
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 5.0.x
+    - name: ls
+      run: ls
     - name: Restore dependencies
       run: dotnet restore
     - name: Build
