@@ -7,8 +7,8 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:5.0-buster-slim AS build
 WORKDIR /src
-COPY ["src/foobar.api/Foobar.Api.csproj", "Foobar.Api/"]
-RUN dotnet restore "src/foobar.api/Foobar.Api.csproj"
+COPY ["src/foobar.api/Foobar.Api.csproj", "foobar.api/"]
+RUN dotnet restore "foobar.api/Foobar.Api.csproj"
 COPY . .
 WORKDIR "/src/foobar.api"
 RUN dotnet build "Foobar.Api.csproj" -c Release -o /app/build
