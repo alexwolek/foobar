@@ -5,6 +5,7 @@ on:
     paths: 
     - 'src/**'
     - '**.sln'
+    - 'Dockerfile'
     - '.github/workflows/docker-image.yml'
   workflow_dispatch:
 
