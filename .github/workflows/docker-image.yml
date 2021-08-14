@@ -7,8 +7,8 @@ on:
     - '**.sln'
     - 'Dockerfile'
     - '.github/workflows/docker-image.yml'
-  tags:
-    - '*'
+    tags:
+      - '*'
   pull_request:
     branches:
       - 'main'
