@@ -17,7 +17,7 @@ namespace Foobar.Api.Controllers
         [HttpGet]
         public IActionResult Get()
         {
-            _logger.LogInformation("in get endpoint");
+            _logger.LogInformation("in get foobars endpoint");
 
             var foobars = new [] 
             {
