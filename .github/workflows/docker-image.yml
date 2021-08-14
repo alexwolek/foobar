@@ -8,6 +8,7 @@ on:
     - 'Dockerfile'
     - '.github/workflows/docker-image.yml'
   tags:
+    - '*'
   pull_request:
     branches:
       - 'main'
