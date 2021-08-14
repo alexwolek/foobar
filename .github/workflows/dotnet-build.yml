@@ -30,7 +30,7 @@ jobs:
         -c Release \
         --no-restore \
         /p:CollectCoverage=true \
-        /p:CoverletOutput=./test-resutls \
+        /p:CoverletOutput="./test-resutls" \
         /p:CoverletOutputFormat=opencover
 
     - name: codecov
