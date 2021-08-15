@@ -16,14 +16,18 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+    
     - name: Setup .NET
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 5.0.x
+
     - name: Restore dependencies
       run: dotnet restore
+
     - name: Build
       run: dotnet build -c Release --no-restore
+
     - name: Test
       run: | 
         dotnet test \
@@ -36,7 +40,4 @@ jobs:
     - name: codecov
       uses: codecov/codecov-action@v2
       with:
-        # token: ${{ secrets.CODECOV_TOKEN }} # not required for public repos
-        # directory: ./tests/foobar.tests.unit/
-        # files: ./coverage.opencover.xml' # optional
         verbose: true
