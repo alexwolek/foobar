@@ -29,8 +29,9 @@ jobs:
         dotnet test \
         -c Release \
         --no-restore \
-        --collect:"XPlat Code Coverage" \
-        -- DataCollectionRunSettings.DataCollectors.DataCollector.Configuration.Format=opencover
+        /p:CollectCoverage=true \
+        /p:CoverletOutput=TestResults/ \
+        /p:CoverletOutputFormat=opencover
 
     - name: codecov
       uses: codecov/codecov-action@v2
