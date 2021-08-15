@@ -29,13 +29,13 @@ jobs:
         dotnet test \
         -c Release \
         --no-restore \
-        /p:CollectCoverage=true \
-        /p:CoverletOutputFormat=opencover
+        --collect:"XPlat Code Coverage" \
+        -- DataCollectionRunSettings.DataCollectors.DataCollector.Configuration.Format=opencover
 
     - name: codecov
       uses: codecov/codecov-action@v2
       with:
         token: ${{ secrets.CODECOV_TOKEN }} # not required for public repos
-        directory: ./tests/foobar.tests.unit/
-        files: ./coverage.opencover.xml' # optional
+        # directory: ./tests/foobar.tests.unit/
+        # files: ./coverage.opencover.xml' # optional
         verbose: true
