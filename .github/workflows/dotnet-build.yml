@@ -35,7 +35,7 @@ jobs:
     - name: codecov
       uses: codecov/codecov-action@v2
       with:
-        token: ${{ secrets.CODECOV_TOKEN }} # not required for public repos
+        # token: ${{ secrets.CODECOV_TOKEN }} # not required for public repos
         # directory: ./tests/foobar.tests.unit/
         # files: ./coverage.opencover.xml' # optional
         verbose: true
