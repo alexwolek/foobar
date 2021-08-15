@@ -9,6 +9,9 @@ namespace Foobar.Api.Controllers
     {
         private readonly ILogger<FoobarsController> _logger;
 
+        /// <summary>
+        /// default constructor
+        /// </summary>
         public FoobarsController(ILogger<FoobarsController> logger)
         {
             _logger = logger;
