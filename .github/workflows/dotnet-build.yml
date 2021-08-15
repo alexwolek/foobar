@@ -30,12 +30,12 @@ jobs:
         -c Release \
         --no-restore \
         /p:CollectCoverage=true \
-        /p:CoverletOutput=../../test-results \
         /p:CoverletOutputFormat=opencover
 
     - name: codecov
       uses: codecov/codecov-action@v2
       with:
         token: ${{ secrets.CODECOV_TOKEN }} # not required for public repos
-        files: ./test-results.opencover.xml' # optional
-        verbose: true # optional (default = false)
+        directory: ./tests/foobar.tests.unit/
+        files: ./coverage.opencover.xml' # optional
+        verbose: true
