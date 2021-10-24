@@ -42,7 +42,7 @@ jobs:
         verbose: true
 
   docker-build:
-    uses: alexwolek/foobar/.github/workflows/docker-reusable.yml@feature/action-reuse-poc
+    uses: alexwolek/foobar/.github/workflows/docker-reusable.yml@d940221a98295d165066188588a5c506dbe98bf2
     with:
       image_name: ${{ github.repository }}.api
       username: ${{ github.repository_owner }}
