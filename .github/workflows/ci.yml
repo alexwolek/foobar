@@ -46,6 +46,6 @@ jobs:
     with:
       image_name: ${{ github.repository }}.api
       username: ${{ github.repository_owner }}
-      push: github.ref == 'refs/heads/main'
+      push: ${{ github.ref }} == 'refs/heads/main'
     secrets:
       token: ${{ secrets.GITHUB_TOKEN }}
