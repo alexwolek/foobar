@@ -1,4 +1,4 @@
-name: .NET build and test
+name: CI
 
 on:
   push:
@@ -11,7 +11,6 @@ on:
 
 jobs:
   build-and-test:
-
     runs-on: ubuntu-latest
 
     steps:
@@ -41,3 +40,12 @@ jobs:
       uses: codecov/codecov-action@v2
       with:
         verbose: true
+
+  docker-build:
+    uses: ./.github/workflows/docker-reusable.yml
+    with:
+      image_name: ${{ github.repository }}.api
+      username: ${{ github.repository_owner }}
+      push: github.ref == 'refs/heads/main'
+    secrets:
+      token: ${{ secrets.GITHUB_TOKEN }}
