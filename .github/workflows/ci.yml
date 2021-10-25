@@ -40,7 +40,7 @@ jobs:
       uses: codecov/codecov-action@v2
 
   docker-build:
-    uses: alexwolek/foobar/.github/workflows/docker-reusable.yml@d940221a98295d165066188588a5c506dbe98bf2
+    uses: alexwolek/foobar/.github/workflows/docker-reusable.yml@main
     needs: build-and-test
     with:
       image_name: ${{ github.repository }}.api
