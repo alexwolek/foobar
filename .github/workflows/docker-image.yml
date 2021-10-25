@@ -1,20 +1,9 @@
-name: Docker Image CI
+name: Build and Push Tagged Docker Image
 
 on:
   push:
-    branches:
-      - 'main'
-    paths: 
-      - 'src/**'
-      - '**.sln'
-      - 'Dockerfile'
-      - '.github/workflows/docker-image.yml'
-      - '.github/workflows/docker-reusable.yml'
     tags:
       - '*'
-  pull_request:
-    branches:
-      - 'main'
   workflow_dispatch:
 
 jobs:
@@ -23,6 +12,6 @@ jobs:
     with:
       image_name: ${{ github.repository }}.api
       username: ${{ github.repository_owner }}
-      push: ${{ github.ref == 'refs/heads/main' }}
+      push: true
     secrets:
       token: ${{ secrets.GITHUB_TOKEN }}
