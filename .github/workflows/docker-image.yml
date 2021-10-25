@@ -1,54 +1,17 @@
-name: Docker Image CI
+name: Build and Push Tagged Docker Image
 
 on:
   push:
-    branches: '**'
-    paths: 
-    - 'src/**'
-    - '**.sln'
-    - 'Dockerfile'
-    - '.github/workflows/docker-image.yml'
     tags:
       - '*'
-  pull_request:
-    branches:
-      - 'main'
   workflow_dispatch:
 
 jobs:
-
   docker-build:
-
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-
-      - name: Docker meta
-        id: meta
-        uses: docker/metadata-action@v3
-        with:
-          images: ghcr.io/${{ github.repository }}.api
-          tags: |
-            type=ref,event=branch
-            type=ref,event=pr
-            type=semver,pattern={{version}}
-            type=semver,pattern={{major}}.{{minor}}
-            type=semver,pattern={{major}}
-            type=sha,prefix=,suffix=,format=long
-        
-      - name: Login to GitHub Container Registry
-        uses: docker/login-action@v1
-        # if: github.ref == 'refs/heads/main'
-        with:
-          registry: ghcr.io
-          username: ${{ github.repository_owner }}
-          password: ${{ secrets.GITHUB_TOKEN }}
-          
-      - name: Build and push
-        uses: docker/build-push-action@v2
-        with:
-          push: true
-          tags: ${{ steps.meta.outputs.tags }}
-          labels: ${{ steps.meta.outputs.labels }}
+    uses: alexwolek/foobar/.github/workflows/docker-reusable.yml@d940221a98295d165066188588a5c506dbe98bf2
+    with:
+      image_name: ${{ github.repository }}.api
+      username: ${{ github.repository_owner }}
+      push: true
+    secrets:
+      token: ${{ secrets.GITHUB_TOKEN }}

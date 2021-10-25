@@ -1,4 +1,4 @@
-name: .NET build and test
+name: CI
 
 on:
   push:
@@ -6,12 +6,11 @@ on:
     - 'src/**'
     - 'tests/**'
     - '**.sln'
-    - '.github/workflows/dotnet-build.yml'
+    - '.github/workflows/ci.yml'
   workflow_dispatch:
 
 jobs:
   build-and-test:
-
     runs-on: ubuntu-latest
 
     steps:
@@ -39,5 +38,13 @@ jobs:
 
     - name: codecov
       uses: codecov/codecov-action@v2
-      with:
-        verbose: true
+
+  docker-build:
+    uses: alexwolek/foobar/.github/workflows/docker-reusable.yml@d940221a98295d165066188588a5c506dbe98bf2
+    needs: build-and-test
+    with:
+      image_name: ${{ github.repository }}.api
+      username: ${{ github.repository_owner }}
+      push: ${{ github.ref == 'refs/heads/main' }}
+    secrets:
+      token: ${{ secrets.GITHUB_TOKEN }}
