@@ -1,7 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-using Foobar.Api.Models;
+﻿using Foobar.Api.Models;
 using Foobar.Api.Repositories;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 
 namespace Foobar.Api.Controllers
 {
@@ -41,5 +41,4 @@ namespace Foobar.Api.Controllers
             return NoContent();
         }
     }
-    
 }
