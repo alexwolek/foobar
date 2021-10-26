@@ -30,6 +30,14 @@ jobs:
     - name: Build
       run: dotnet build -c Release --no-restore
 
+    - name: Run .NET Code Analysis
+      uses: dotnet/code-analysis@v1
+      id: code-analysis
+      with:
+        solution: Foobar.sln
+        build-breaking: true
+        all-categories: all
+
     - name: Test
       run: | 
         dotnet test \
