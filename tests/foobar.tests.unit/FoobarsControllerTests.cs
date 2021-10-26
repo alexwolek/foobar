@@ -31,10 +31,10 @@ namespace Foobar.Tests.Unit
         public void AddFoobar_Success()
         {
             // arrange
-            var repository = new FooRepository(new Foo[] { });
+            var repository = new FooRepository(System.Array.Empty<Foo>());
             var controller = new FoobarsController(repository, NullLogger<FoobarsController>.Instance);
 
-            var fooToAdd = new Foo{Bar = "new foo"};
+            var fooToAdd = new Foo { Bar = "new foo" };
 
             // act
             var getResult = controller.AddFoobar(fooToAdd);
