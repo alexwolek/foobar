@@ -16,7 +16,6 @@ jobs:
 
   build-and-test:
     uses: alexwolek/foobar/.github/workflows/dotnet-reusable.yml@main
-    needs: docker-build
 
   docker-build:
     uses: alexwolek/foobar/.github/workflows/docker-reusable.yml@main
