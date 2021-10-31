@@ -1,4 +1,4 @@
-name: Terraform Reusable
+name: Terraform
 
 on:
   workflow_call:
