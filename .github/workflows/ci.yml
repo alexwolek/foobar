@@ -8,14 +8,10 @@ on:
   workflow_dispatch:
 
 jobs:
-  hello:
-    name: Hello World
-    runs-on: ubuntu-latest
-    steps:
-      - run: echo hello
-
   build-and-test:
     uses: alexwolek/foobar/.github/workflows/dotnet-reusable.yml@main
+    secrets:
+      TF_API_TOKEN: ${{ secrets.TF_API_TOKEN }}
 
   docker-build:
     uses: alexwolek/foobar/.github/workflows/docker-reusable.yml@main
