@@ -8,6 +8,12 @@ on:
   workflow_dispatch:
 
 jobs:
+  hello:
+    name: Hello World
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo hello
+
   build-and-test:
     uses: alexwolek/foobar/.github/workflows/dotnet-reusable.yml@main
     needs: docker-build
