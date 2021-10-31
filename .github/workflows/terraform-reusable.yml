@@ -6,6 +6,8 @@ on:
     paths: 
       - 'terraform/**'
       - '.github/workflows/terraform-reusable.yml'
+    branches-ignore:
+      - 'main'
   pull_request:
     paths: 
       - 'terraform/**'

@@ -1,0 +1,50 @@
+name: .NET Build and Test
+
+on:
+  workflow_call:
+  push:
+    paths: 
+      - 'src/**'
+      - 'tests/**'
+      - '**.sln'
+      - '.github/workflows/dotnet-reusable.yml'
+    branches-ignore:
+      - 'main'
+  pull_request:
+    paths: 
+      - 'src/**'
+      - 'tests/**'
+      - '**.sln'
+      - '.github/workflows/dotnet-reusable.yml'
+    branches:
+      - 'main'
+
+jobs:
+  build-and-test:
+    name: .NET Build and Test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: 5.0.x
+
+      - name: Restore dependencies
+        run: dotnet restore
+
+      - name: Build
+        run: dotnet build -c Release --no-restore
+
+      - name: Test
+        run: | 
+          dotnet test \
+          -c Release \
+          --no-restore \
+          /p:CollectCoverage=true \
+          /p:CoverletOutput=TestResults/ \
+          /p:CoverletOutputFormat=opencover
+
+      - name: codecov
+        uses: codecov/codecov-action@v2
