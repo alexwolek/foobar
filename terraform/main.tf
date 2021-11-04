@@ -25,6 +25,6 @@ resource "aws_instance" "ubuntu" {
   tags = {
     Name        = var.instance_name,
     Terraform   = true,
-    Environment = dev
+    Environment = "dev"
   }
 }
