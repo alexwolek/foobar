@@ -23,7 +23,8 @@ resource "aws_instance" "ubuntu" {
   instance_type = var.instance_type
 
   tags = {
-    Name      = var.instance_name,
-    Terraform = true
+    Name        = var.instance_name,
+    Terraform   = true,
+    Environment = dev
   }
 }
